@@ -6,8 +6,8 @@ from functools import partial
 from pathlib import Path
 
 parser = argparse.ArgumentParser("image-sorter")
-parser.add_argument("width", help="Width of window", type=int)
-parser.add_argument("height", help="Height of window", type=int)
+parser.add_argument("--width", help="Width of window", type=int)
+parser.add_argument("--height", help="Height of window", type=int)
 args = parser.parse_args()
 
 
@@ -23,8 +23,13 @@ p = Path("./")
 folders = [f for f in p.iterdir() if f.is_dir()]
 images = []
 for content_filename in os.listdir("./"):
-    # check if the image ends with png or jpg
-    if content_filename.endswith(".png") or content_filename.endswith(".jpg"):
+    # check if the image ends with png/gif/ppm/pgm
+    if (
+        content_filename.endswith(".png")
+        or content_filename.endswith(".gif")
+        or content_filename.endswith(".ppm")
+        or content_filename.endswith(".pgm")
+    ):
         images.append(content_filename)
 
 index.set(0)
