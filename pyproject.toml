@@ -1,0 +1,6 @@
+[project]
+name = "image-sorter"
+version = "0.0.1"
+
+[project.scripts]
+image-sorter = "image_sorter:main"
